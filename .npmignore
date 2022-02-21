@@ -1,0 +1,11 @@
+node_modules/
+scripts/
+src/
+test/
+build/scripts
+build/test
+.eslintrc.js
+.gitignore
+.prettierrc.js
+.jest.config.js
+.tsconfig.json
