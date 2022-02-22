@@ -7,8 +7,8 @@ All available domains can be found in [src folder](https://github.com/ihmpavel/f
 ## Usage
 | Function | Return value | Example usage |
 |---|---|---|
-| `isFreeEmail(email: string, emailValidation: IsEmailOptions = {})` | `boolean` &#124; `Error('Email is not a string')` | `isFreeEmail('john.doe@gmail.com')` => `true` |
-| `isCompanyEmail(email: string, emailValidation: IsEmailOptions = {})` | `boolean` &#124; `Error('Email is not a string')` | `isCompanyEmail('john.doe@gmail.com')` => `false` |
+| `isFreeEmail(email: string, emailValidation: IsEmailOptions = {})` | `boolean` &#124; `Error('Email is not a string')` &#124; `Error('Email is not valid')` | `isFreeEmail('john.doe@gmail.com')` => `true` |
+| `isCompanyEmail(email: string, emailValidation: IsEmailOptions = {})` | `boolean` &#124; `Error('Email is not a string')` &#124; `Error('Email is not valid')` | `isCompanyEmail('john.doe@gmail.com')` => `false` |
 
 `IsEmailOptions` are available options for email validation from [validator](https://www.npmjs.com/package/validator) library. You can check [test folder](https://github.com/ihmpavel/free-email-domains-list/tree/master/src) for usage.
 

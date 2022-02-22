@@ -2,12 +2,10 @@ import { isCompanyEmail, isFreeEmail } from '../src'
 
 describe('Is email invalid', () => {
   it('Invalid email free', () => {
-    const name = isFreeEmail('email_email.com')
-    expect(name).toEqual(false)
+    expect(() => isFreeEmail('email_email.com')).toThrow('Email is not valid')
   })
   it('Invalid email company', () => {
-    const name = isCompanyEmail('email_email.com')
-    expect(name).toEqual(false)
+    expect(() => isCompanyEmail('email_email.com')).toThrow('Email is not valid')
   })
   it('Invalid input free', () => {
     expect(() => isFreeEmail(123 as unknown as string)).toThrow('Email is not a string')
@@ -23,13 +21,25 @@ describe('Is email invalid', () => {
     const name = isCompanyEmail('john.doeĚŠČŘŽÝÁÍÉ@google.com')
     expect(name).toEqual(true)
   })
-  it('Invalid email free validation from `validator` package', () => {
-    const name = isFreeEmail('john.doeĚŠČŘŽÝÁÍÉ@gmail.com', { allow_utf8_local_part: false })
-    expect(name).toEqual(false)
+  it('Invalid email free validation from `validator` package 1)', () => {
+    expect(() =>
+      isFreeEmail('john.doeĚŠČŘŽÝÁÍÉ@gmail.com', { allow_utf8_local_part: false })
+    ).toThrow('Email is not valid')
   })
-  it('Invalid email company validation from `validator` package', () => {
-    const name = isCompanyEmail('john.doeĚŠČŘŽÝÁÍÉ@google.com', { allow_utf8_local_part: false })
-    expect(name).toEqual(false)
+  it('Invalid email free validation from `validator` package 2)', () => {
+    expect(() =>
+      isFreeEmail('john.doeĚŠČŘŽÝÁÍÉ@gmail.com', { allow_utf8_local_part: false })
+    ).toThrow('Email is not valid')
+  })
+  it('Invalid email company validation from `validator` package 1)', () => {
+    expect(() =>
+      isCompanyEmail('john.doeĚŠČŘŽÝÁÍÉ@gmail.com', { allow_utf8_local_part: false })
+    ).toThrow('Email is not valid')
+  })
+  it('Invalid email company validation from `validator` package 2)', () => {
+    expect(() =>
+      isCompanyEmail('john.doeĚŠČŘŽÝÁÍÉ@gmail.com', { allow_utf8_local_part: false })
+    ).toThrow('Email is not valid')
   })
 })
 

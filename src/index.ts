@@ -6,25 +6,19 @@ const validateEmail = (email: string, emailValidation: IsEmailOptions = {}) => {
     throw new Error('Email is not a string')
   }
 
-  return isEmail(email, emailValidation)
+  if (!isEmail(email, emailValidation)) {
+    throw new Error('Email is not valid')
+  }
 }
 
 const isFreeEmail = (email: string, emailValidation: IsEmailOptions = {}) => {
-  if (!validateEmail(email, emailValidation)) {
-    return false
-  }
+  validateEmail(email, emailValidation)
 
   const domain = email.split('@')[1] ?? ''
   return DOMAINS.has(domain)
 }
 
-const isCompanyEmail = (email: string, emailValidation: IsEmailOptions = {}) => {
-  if (!validateEmail(email, emailValidation)) {
-    return false
-  }
-
-  const domain = email.split('@')[1] ?? ''
-  return !DOMAINS.has(domain)
-}
+const isCompanyEmail = (email: string, emailValidation: IsEmailOptions = {}) =>
+  !isFreeEmail(email, emailValidation)
 
 export { isFreeEmail, isCompanyEmail }
