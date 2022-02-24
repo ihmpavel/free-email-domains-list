@@ -2,16 +2,20 @@ import { isCompanyEmail, isFreeEmail } from '../src'
 
 describe('Is email invalid', () => {
   it('Invalid email free', () => {
-    expect(() => isFreeEmail('email_email.com')).toThrow('Email is not valid')
+    const name = isFreeEmail('email_email.com')
+    expect(name).toEqual(false)
   })
   it('Invalid email company', () => {
-    expect(() => isCompanyEmail('email_email.com')).toThrow('Email is not valid')
+    const name = isCompanyEmail('email_email.com')
+    expect(name).toEqual(false)
   })
   it('Invalid input free', () => {
-    expect(() => isFreeEmail(123 as unknown as string)).toThrow('Email is not a string')
+    const name = isFreeEmail(123 as unknown as string)
+    expect(name).toEqual(false)
   })
   it('Invalid input company', () => {
-    expect(() => isCompanyEmail(123 as unknown as string)).toThrow('Email is not a string')
+    const name = isCompanyEmail(123 as unknown as string)
+    expect(name).toEqual(false)
   })
   it('Valid email free validation from `validator` package', () => {
     const name = isFreeEmail('john.doeĚŠČŘŽÝÁÍÉ@gmail.com')
@@ -21,25 +25,13 @@ describe('Is email invalid', () => {
     const name = isCompanyEmail('john.doeĚŠČŘŽÝÁÍÉ@google.com')
     expect(name).toEqual(true)
   })
-  it('Invalid email free validation from `validator` package 1)', () => {
-    expect(() =>
-      isFreeEmail('john.doeĚŠČŘŽÝÁÍÉ@gmail.com', { allow_utf8_local_part: false })
-    ).toThrow('Email is not valid')
+  it('Invalid email free validation from `validator` package', () => {
+    const name = isFreeEmail('john.doeĚŠČŘŽÝÁÍÉ@gmail.com', { allow_utf8_local_part: false })
+    expect(name).toEqual(false)
   })
-  it('Invalid email free validation from `validator` package 2)', () => {
-    expect(() =>
-      isFreeEmail('john.doeĚŠČŘŽÝÁÍÉ@gmail.com', { allow_utf8_local_part: false })
-    ).toThrow('Email is not valid')
-  })
-  it('Invalid email company validation from `validator` package 1)', () => {
-    expect(() =>
-      isCompanyEmail('john.doeĚŠČŘŽÝÁÍÉ@gmail.com', { allow_utf8_local_part: false })
-    ).toThrow('Email is not valid')
-  })
-  it('Invalid email company validation from `validator` package 2)', () => {
-    expect(() =>
-      isCompanyEmail('john.doeĚŠČŘŽÝÁÍÉ@gmail.com', { allow_utf8_local_part: false })
-    ).toThrow('Email is not valid')
+  it('Invalid email company validation from `validator` package', () => {
+    const name = isCompanyEmail('john.doeĚŠČŘŽÝÁÍÉ@gmail.com', { allow_utf8_local_part: false })
+    expect(name).toEqual(false)
   })
 })
 

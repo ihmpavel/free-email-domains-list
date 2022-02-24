@@ -1,24 +1,30 @@
 import { DOMAINS } from './constants'
 import isEmail, { IsEmailOptions } from 'validator/lib/isEmail'
 
-const validateEmail = (email: string, emailValidation: IsEmailOptions = {}) => {
+const isEmailValid = (email: string, emailValidation: IsEmailOptions = {}) => {
   if (typeof email !== 'string') {
-    throw new Error('Email is not a string')
+    return false
   }
 
-  if (!isEmail(email, emailValidation)) {
-    throw new Error('Email is not valid')
-  }
+  return isEmail(email, emailValidation)
 }
 
-const isFreeEmail = (email: string, emailValidation: IsEmailOptions = {}) => {
-  validateEmail(email, emailValidation)
+const isFreeEmail = (email: string, emailValidation: IsEmailOptions = {}): boolean | Error => {
+  if (!isEmailValid(email, emailValidation)) {
+    return false
+  }
 
   const domain = email.split('@')[1] ?? ''
   return DOMAINS.has(domain)
 }
 
-const isCompanyEmail = (email: string, emailValidation: IsEmailOptions = {}) =>
-  !isFreeEmail(email, emailValidation)
+const isCompanyEmail = (email: string, emailValidation: IsEmailOptions = {}): boolean | Error => {
+  if (!isEmailValid(email, emailValidation)) {
+    return false
+  }
+
+  const domain = email.split('@')[1] ?? ''
+  return !DOMAINS.has(domain)
+}
 
 export { isFreeEmail, isCompanyEmail }
