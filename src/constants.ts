@@ -6426,6 +6426,7 @@ export const DOMAINS = new Set([
   "inibuatsgb.ml",
   "inibuatsgb.tk",
   "inicia.es",
+  "inkomail.com",
   "inmail.cz",
   "inmail.sk",
   "inmail24.com",
