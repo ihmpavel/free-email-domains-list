@@ -47,5 +47,4 @@ module.exports = {
     'no-irregular-whitespace': 'warn',
   },
   plugins: ['sort-imports-es6-autofix'],
-  ignorePatterns: ['__generated__/*'],
 }
