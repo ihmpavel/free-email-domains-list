@@ -1,4 +1,3 @@
-import fetch from 'node-fetch'
 import fs from 'fs'
 
 // https://gist.github.com/okutbay/5b4974b70673dfdcc21c517632c1f984
