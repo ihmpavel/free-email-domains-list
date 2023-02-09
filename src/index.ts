@@ -9,7 +9,7 @@ const isEmailValid = (email: string, emailValidation: IsEmailOptions = {}) => {
   return isEmail(email, emailValidation)
 }
 
-const isFreeEmail = (email: string, emailValidation: IsEmailOptions = {}): boolean | Error => {
+const isFreeEmail = (email: string, emailValidation: IsEmailOptions = {}) => {
   if (!isEmailValid(email, emailValidation)) {
     return false
   }
@@ -18,7 +18,7 @@ const isFreeEmail = (email: string, emailValidation: IsEmailOptions = {}): boole
   return DOMAINS.has(domain)
 }
 
-const isCompanyEmail = (email: string, emailValidation: IsEmailOptions = {}): boolean | Error => {
+const isCompanyEmail = (email: string, emailValidation: IsEmailOptions = {}) => {
   if (!isEmailValid(email, emailValidation)) {
     return false
   }
