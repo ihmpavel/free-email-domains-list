@@ -27,4 +27,4 @@ const isCompanyEmail = (email: string, emailValidation: IsEmailOptions = {}) => 
   return !DOMAINS.has(domain)
 }
 
-export { isFreeEmail, isCompanyEmail }
+export { isFreeEmail, isCompanyEmail, DOMAINS }
