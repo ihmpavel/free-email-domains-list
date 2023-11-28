@@ -74980,6 +74980,7 @@ export const DOMAINS = new Set([
   "sfgov.net",
   "sfgpros.com",
   "sfmail.top",
+  "sfolkar.com",
   "sforvike.cf",
   "sforvike.ga",
   "sforvike.ml",
