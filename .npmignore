@@ -1,5 +1,6 @@
 node_modules/
 scripts/
+data/
 src/
 test/
 build/scripts
