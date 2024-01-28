@@ -11,23 +11,15 @@ const main = async () => {
 
   const rawData: string[] = res.split('\n')
 
-  const srcDir = `./src`
-  const dataDir = `./data`
-
-  const dirs = [srcDir, dataDir]
-  dirs.forEach(dir => {
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir)
-    }
-  })
+  const dir = `./src`
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir)
+  }
 
   fs.writeFileSync(
-    `${srcDir}/constants.ts`,
+    `${dir}/constants.ts`,
     `export const DOMAINS = new Set(${JSON.stringify(rawData, null, 2)})`
   )
-  fs.writeFileSync(`${dataDir}/data.json`, JSON.stringify(rawData, null, 2))
-  fs.writeFileSync(`${dataDir}/data.txt`, rawData.join('\n'))
-  fs.writeFileSync(`${dataDir}/data.csv`, `domain\n${rawData.join('\n')}`)
 }
 
 main()
