@@ -12,6 +12,14 @@ All available domains can be found in [src folder](https://github.com/ihmpavel/f
 
 `IsEmailOptions` are available options for email validation from [validator](https://www.npmjs.com/package/validator) library. You can check [test folder](https://github.com/ihmpavel/free-email-domains-list/tree/master/src) for usage.
 
+If you don't want to install `validator` as a peer dependency, you can also just import the list of domains like so:
+
+```ts
+import { DOMAINS } from 'free-email-domains-list/build/src/constants';
+
+const isFreeEmail = (validEmail: string) => DOMAINS.has(validEmail.split('@')[1] ?? '')
+```
+
 If the the email provided is not valid, `false` is always returned.
 
 ## Tests
