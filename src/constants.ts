@@ -96638,5 +96638,14 @@ export const DOMAINS = new Set([
   "zzz.com",
   "zzz.pl",
   "zzz813.com",
-  "zzz98.xyz"
+  "zzz98.xyz",
+  "mailto.plus",
+  "fexpost.com",
+  "fexbox.org",
+  "mailbox.in.au",
+  "rover.info",
+  "chitthi.in",
+  "fextemp.com",
+  "any.pink",
+  "merepost.com"
 ])
